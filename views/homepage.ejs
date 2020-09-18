@@ -1,0 +1,248 @@
+<%- include('partials/header.ejs') %> 
+<!--Search bar-->
+
+   <div class="hero-wrap js-fullheight" style="background-image: url('images/hero_bg_1.jpg');" data-stellar-background-ratio="0.w-100">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start" data-scrollax-parent="true">
+          <div class="col-xl-10 ftco-animate mb-5 pb-5" data-scrollax=" properties: { translateY: '70%' }">
+          	<p class="mb-4 mt-5 pt-5" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">We have <span class="number" data-number="850000"><%= countjob %>+</span> great job offers you deserve!</p>
+			  <h1 class="mb-2 text-black w-75"><span class="font-weight-bold">Largest Job</span> Site On The Net</h1>
+			  <div class="job-search">
+				<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+				  <li class="nav-item">
+					<a class="nav-link active py-3" id="pills-job-tab" data-toggle="pill" href="#pills-job" role="tab" aria-controls="pills-job" aria-selected="true">Find A Job</a>
+				  </li>
+				  <li class="nav-item">
+					<a class="nav-link py-3" id="pills-candidate-tab" data-toggle="pill" href="#pills-candidate" role="tab" aria-controls="pills-candidate" aria-selected="false">Find A Candidate</a>
+				  </li>
+				</ul>
+				<div class="tab-content bg-white p-4 rounded" id="pills-tabContent">
+				  <div class="tab-pane fade show active" id="pills-job" role="tabpanel" aria-labelledby="pills-job-tab">
+					<form action="#" method="post">
+					  <div class="row">
+						<div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
+						  <input type="text" class="form-control" placeholder="eg. Web Developer">
+						</div>
+						<div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
+						  <div class="select-wrap">
+							<span class="icon-keyboard_arrow_down arrow-down"></span>
+							<select name="" id="" class="form-control">
+							  <option value="">Category</option>
+							  <option value="fulltime">Full Time</option>
+							  <option value="fulltime">Part Time</option>
+							  <option value="freelance">Freelance</option>
+							  <option value="internship">Internship</option>
+							  <option value="internship">Termporary</option>
+							</select>
+						  </div>
+						</div>
+						<div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
+						  <input type="text" class="form-control form-control-block search-input" id="autocomplete" placeholder="Location" onFocus="geolocate()">
+						</div>
+						<div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
+						  <input type="submit" class="btn btn-primary btn-block" value="Search">
+						</div>
+					  </div>
+					</form>
+				  </div>
+				  <div class="tab-pane fade" id="pills-candidate" role="tabpanel" aria-labelledby="pills-candidate-tab">
+					<form action="#" method="post">
+					  <div class="row">
+						<div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
+						  <input type="text" class="form-control" placeholder="eg. Carl Smith">
+						</div>
+						<div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
+						  <div class="select-wrap">
+							<span class="icon-keyboard_arrow_down arrow-down"></span>
+							<select name="" id="" class="form-control">
+							  <option value="">Category</option>
+							  <option value="fulltime">Full Time</option>
+							  <option value="fulltime">Part Time</option>
+							  <option value="freelance">Freelance</option>
+							  <option value="internship">Internship</option>
+							  <option value="internship">Termporary</option>
+							</select>
+						  </div>
+						</div>
+						<div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
+						  <input type="text" class="form-control form-control-block search-input" id="autocomplete" placeholder="Location" onFocus="geolocate()">
+						</div>
+						<div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
+						  <input type="submit" class="btn btn-primary btn-block" value="Search">
+						</div>
+					  </div>
+					</form>
+				 </div>
+				</div>
+				
+			  </div>
+			</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<hr>
+	
+	
+    <!-- Search Jobs  -->
+<div class="popular_catagory_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section_title mb-40">
+                        <h3>Find Job By</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+				<div class="col-xl-3 col-md-6 mb-4">
+					<div class="card border-left-primary shadow h-100 py-2">
+					  <div class="card-body">
+						<div class="row no-gutters align-items-center">
+						  <div class="col mr-2">
+							<div class="text-xs font-weight-bold text-primary text-uppercase mb-1"><a href="/findalljob" class="text-reset">All Jobs</a></div>
+							<div class="h5 mb-0 font-weight-bold text-gray-800"><%= countjob %> </div>
+						  </div>
+						  <div class="col-auto">
+							<i class="fas fa-calendar fa-2x text-gray-300"></i>
+						  </div>
+						</div>
+					  </div>
+					</div>
+				  </div>
+
+				   <!-- Earnings (Monthly) Card Example -->
+				   <div class="col-xl-3 col-md-6 mb-4">
+					<div class="card border-left-success shadow h-100 py-2">
+					  <div class="card-body">
+						<div class="row no-gutters align-items-center">
+						  <div class="col mr-2">
+							<div class="text-xs font-weight-bold text-success text-uppercase mb-1"><a href="/allcompany" class="text-reset">Company</a></div>
+							<div class="h5 mb-0 font-weight-bold text-gray-800"><%= countcompany %> </div>
+						  </div>
+						  <div class="col-auto">
+							<i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+						  </div>
+						</div>
+					  </div>
+					</div>
+				  </div>
+
+
+				     <!-- Earnings (Monthly) Card Example -->
+					 <div class="col-xl-3 col-md-6 mb-4">
+						<div class="card border-left-success shadow h-100 py-2">
+						  <div class="card-body">
+							<div class="row no-gutters align-items-center">
+							  <div class="col mr-2">
+								<div class="text-xs font-weight-bold text-success text-uppercase mb-1"><a href="/findallcategory" class="text-reset">Category</a></div>
+								<div class="h5 mb-0 font-weight-bold text-gray-800">15</div>
+							  </div>
+							  <div class="col-auto">
+								<i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+							  </div>
+							</div>
+						  </div>
+						</div>
+					  </div>
+					  
+                     
+					
+					   <% result.forEach(function(data) { %>  
+				   <!-- Pending Requests Card Example -->
+				   <div class="col-xl-3 col-md-6 mb-4">
+					<div class="card border-left-warning shadow h-100 py-2">
+					  <div class="card-body">
+						<div class="row no-gutters align-items-center">
+						  <div class="col mr-2">
+							<% if(data._id =='Beginners'){%>
+							<div class="text-xs font-weight-bold text-danger text-uppercase mb-1"><a href="/beginnersjob/<%= data._id %>"  class="text-reset">Job for  <%= data._id %></a></div>
+							<div class="h5 mb-0 font-weight-bold text-gray-800"><%= data.count %></div>
+							<% } else if(data._id =='Intermediate'){ %>
+								<div class="text-xs font-weight-bold text-warning text-uppercase mb-1"><a href="/intermediatejob/<%= data._id %>" class="text-reset">Job for  <%= data._id %></a></div>
+							<div class="h5 mb-0 font-weight-bold text-gray-800"><%= data.count %></div>
+							<% }else if(data._id =='Expert'){ %>
+								<div class="text-xs font-weight-bold text-info text-uppercase mb-1"><a href="/expertjob/<%= data._id %>" class="text-reset">Job for  <%= data._id %></a></div>
+								<div class="h5 mb-0 font-weight-bold text-gray-800"><%= data.count %></div>
+							<% } %>
+    
+						  </div>
+						 
+						
+						</div>
+					  </div>
+					</div>
+				  </div>
+				  <% }); %>
+				</div>
+			
+				
+            </div>
+        </div>
+	</div>
+	
+	
+
+
+
+	<!--Recent Jobs Posts-->
+	<section class="featured-job-area">
+		<div class="container">
+		
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="section-tittle text-center">
+
+						<span><b><h4>Recent Job</h4></b></span>
+						
+					</div>
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-xl-10">
+					<% if(recent){%>
+						<% if((recent.length) ==0){%>
+							<h1>Sorry, recent  posted job yet job yet!</h1>
+							<% }else{ %>
+					   <% for(let i=0;i<recent.length; i++) { %>
+				
+		      	 <!-- Recent Post Jobs -->
+					<div class="single-job-items mb-30">
+						<div class="job-items">
+							<div class="company-img">
+								<a href="job_details.html"><img src="images/<%= recent[i].postuserid.companylogo %> " alt="" style="border: 1px solid #ddd; border-radius: 10px; padding:2px;width: 100px;"></a>
+							</div>
+							<div class="job-tittle">
+								<a href="job_details.html"><h4><%= recent[i].jobtitle %></h4></a>
+								<ul>
+									<li><%= recent[i].postuserid.companyname %></li>
+									<li><i class="fas fa-map-marker-alt"></i><%= recent[i].joblocation %></li>
+									<li><%= recent[i].jobexperiencelevel %></li>
+								</ul>
+							</div>
+						</div>
+						<div class="items-link f-right">
+							<a href="job_details.html"><%= recent[i].jobtype %></a>
+							<span><%= moment(recent[i].jobpostdate,"dddd, MMMM Do YYYY, h:mm:ss a").fromNow() %></span>
+						</div>
+					</div>
+					<% } %>
+    
+        
+					<% } %>
+					<% } %>
+				</div>
+			</div>
+		</div>
+	</section>
+<hr>
+           
+<div class="col-md-12 text-center ">
+	<a href="#" class="btn btn-primary rounded py-3 px-5"><span class="icon-plus-circle"></span> Show More Jobs</a>
+  </div>
+</div> 
+  
+<%- include('partials/fotter.ejs') %> 
+

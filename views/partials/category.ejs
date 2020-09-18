@@ -1,0 +1,31 @@
+
+<div class="row d-flex justify-contnet-center" >
+    <% if(allcompany){%>
+        <% if((allcompany.length) ==0){%>
+                                              
+        <div class="alert alert-danger">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">
+                &times;
+            </a>
+           <span>No company  Job post Yet</span>
+             
+         </div>
+            <% }else{ %>
+       <% for(let i=0;i<allcompany.length; i++) { %>
+    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-4 p-5" >
+        <div class="single-services text-center mb-20" style="border: 1px solid #ddd; border-radius: 10px">
+            <div class="company-img">
+                <a href="/companypostjob/<%= allcompany[i]._id %>" ><img src="images/<%= allcompany[i].companylogo %> " alt="companylogo" style=" padding:2px;width: 80px;"></a>
+            </div>
+            <div class="services-cap">
+               <h5><a href="/companypostjob/<%= allcompany[i]._id%> "> <%= allcompany[i].companyname %></a></h5>
+              
+            </div>
+            <span><%= allcompany[i].companytype %> </span>
+        </div>
+    </div>
+   <% } %>
+<% } %>
+<% } %>
+            
+          

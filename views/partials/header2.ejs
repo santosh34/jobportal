@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<title><%= title %> </title>
+<head>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merienda+One">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+<!--auto comlete code-->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
+<!--Linked to Css-->
+   <link  rel="stylesheet" href="public/css/homepage.css" type="text/css" media="screen" >
+    <link  rel="stylesheet" href="public/css/login.css" type="text/css" media="screen">
+    <link  rel="stylesheet" href="public/css/register.css" type="text/css" media="screen">
+    <link  rel="stylesheet" href="public/css/search.css" type="text/css" media="screen">
+    <link  rel="stylesheet" href="public/css/category.scss"type="text/css" media="screen">
+    <link  rel="stylesheet" href="public/css/post.css" type="text/css" media="screen">
+    <link  rel="stylesheet" href="public/css/homesearch.css" type="text/css" media="screen">
+
+
+
+</head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a href="#" class="navbar-brand">Brand<b>Name</b></a>  		
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        <% if(isjobseekerauth) { %>
+            <!-- Collection of nav links, forms, and other content for toggling -->
+            <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
+               
+                <div class="navbar-nav">
+                    <a href="#" class="nav-item nav-link">Home</a>
+                    <a href="/about" class="nav-item nav-link">About</a>			
+                    <div class="nav-item dropdown">
+                        <a href="#" data-toggle="dropdown" class="nav-item nav-link dropdown-toggle">Services</a>
+                        <div class="dropdown-menu">					
+                            <a href="/jobseekerlogout" class="dropdown-item">Jobseeker Logout</a>
+                           </div>
+                    </div>
+                   
+                </div>
+                
+               
+            </div>
+           
+            <% } else { %>
+                
+                <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
+               
+                    <div class="navbar-nav">
+                        <a href="#" class="nav-item nav-link">Home</a>
+                        <a href="/about" class="nav-item nav-link">JOBS</a>			
+                        <div class="nav-item dropdown">
+                            <a href="#" data-toggle="dropdown" class="nav-item nav-link dropdown-toggle">ABOUT</a>
+                            <div class="dropdown-menu">					
+                                <a href="#" class="dropdown-item">COMPANIES</a>
+                               
+                            </div>
+                        </div>
+                        <a href="/" class="nav-item nav-link active">CATEGORY</a>
+                       
+                    </div>
+                   
+                </div>
+                
+                
+            <div class="nav-item dropdown">
+                <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle user-action "> Login <b class="caret"></b></a>
+                <div class="dropdown-menu">
+                    <a href="/jobseeker/jobseekerlogin" class="dropdown-item"><i class="fa fa-user-o"></i>JobSeeker Login</a>
+                    <a href="/login" class="dropdown-item"><i class="fa fa-user-o"></i>Employee Login</a>
+                    </div>
+            </div>
+            <div class="nav-item dropdown">
+                <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle user-action px-5"> Signup <b class="caret"></b></a>
+                <div class="dropdown-menu">
+                    <a href="/jobseeker/jobseekerregister" class="dropdown-item"><i class="fa fa-user-o"></i>Jobseeker Signup</a>
+                    <a href="/register" class="dropdown-item"><i class="fa fa-user-o"></i>Employee Signup</a>
+                </div>
+            </div>
+        <% } %>
+      
+    
+        </nav>

@@ -1,0 +1,72 @@
+<%- include('../partials/header2.ejs') %> 
+
+<div class="signup-form" style="width:35%">
+    <form action="/jobseekerregister" method="POST">
+		<h2>JobSeeker Sign Up</h2>
+		<p>Please fill in this form to create an account!</p>
+		<hr>
+		<% if(hasErrors) {%>
+			<% for(var i = 0; i <messages.length; i++) {%>
+				<div class="alert alert-danger">
+				   <a href="#" class="close" data-dismiss="alert" aria-label="close">
+					   &times;
+				   </a>
+				   <%= messages[i] %>
+					
+				</div>
+			<% } %>
+		<% } %>
+		
+
+        <div class="form-group">
+			<div class="input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text">
+						<span class="fa fa-user"></span>
+					</span>                    
+				</div>
+				<input type="text" class="form-control" name="jobseekerusername" placeholder="JobSeeker Name" required="required">
+			</div>
+		</div>
+		
+		 
+		<div class="form-group">
+			<div class="input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text">
+						<i class="fa fa-paper-plane"></i>
+					</span>                    
+				</div>
+				<input type="email" class="form-control" name="jobseekeremail" placeholder="Email Address" required="required">
+			</div>
+        </div>
+       
+		<div class="form-group">
+			<div class="input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text">
+						<i class="fa fa-lock"></i>
+					</span>                    
+				</div>
+				<input type="password" class="form-control" name="jobseekerpassword" placeholder="Password" required="required">
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text">
+						<i class="fa fa-lock"></i>
+					</span>                    
+				</div>
+				<input type="password" class="form-control" name="jobseekerconfirmpassword" placeholder="Confirm Password" >
+			</div>
+        </div>
+		
+       
+		<div class="form-group">
+            <button type="submit" class="btn btn-primary btn-lg">JobSeekerSign Up</button>
+        </div>
+    </form>
+	  <div class="text-center small">Already have an account? <a href="/login">Sign up</a></div>
+</div>
+<%- include('../partials/fotter.ejs') %> 

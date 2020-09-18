@@ -1,0 +1,152 @@
+<%- include('../partials/header2.ejs') %>  
+<div class="container">
+    <br>
+	<div class="card">
+    <div class="row">
+    <div class="col-sm-3"><!--left col-->
+     <div class="text-center">
+        <img src="/images/daru.png" class="avatar img-circle img-thumbnail">
+      </div>
+          </div><!--/col-3-->
+		        <div class="card-body">
+		            <div class="row">
+		                <div class="col-md-12">
+		                    <h4>Candidate Profile </h4>
+		                    <hr>
+		                </div>
+		            </div>
+		            <div class="row">
+		                <div class="col-md-12">
+                     
+		                    <form action="/jobseeker/profile" method="POST" enctype="multipart/form-data">
+                              <div class="form-group row">
+                                <label for="company" class="col-4 col-form-label">User Name*</label> 
+                                <div class="col-8">
+                                    <input type="text" class="form-control" name="username" value=" ">
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label for="company" class="col-4 col-form-label">Job Skills*</label> 
+                                <div class="col-8">
+                                    <input type="text" class="form-control" name="jobskills" value=" ">
+                                </div>
+                              </div>
+                              
+                             
+                              <div class="form-group row">
+                                <label for="select" class="col-4 col-form-label">Preferred Categories </label> 
+                                <div class="col-8">
+                                  <select id="jobcategory" name="companytype" class="custom-select" >
+                                    <option value="Banks">Company Type</option>
+                                    <option value="Finance">Finanace</option>
+                                    <option value="SoftwareCompanies">Software Company</option>
+                                    <option value="NGO">NGO/INGO/Developement </option>
+                                    <option value="Hotels/Restaurent">Hotels/Restaurent</option>
+                                    <option value="Insurance">Insurance Companies</option>
+                                    <option value="RetailsShop">Retails/Shop</option>
+                                    <option value="Ecommerce">Ecommerce</option>
+                                    <option value="Ecommerce">Others</option>
+                                    </select>
+                                </div>
+                              </div>
+
+                              <div class="form-group row">
+                                <label for="select" class="col-4 col-form-label">Working Experience  </label> 
+                                <div class="col-8">
+                                  <select id="experience" name="jobexperience" class="custom-select">
+                                    <option value="" selected disabled hidden> Choose Working Experience</option>
+                                    <option value="0-1 Years">0-1 Years</option>
+                                    <option value="1-2 Years">1-2 Years</option>
+                                    <option value="2-5 Years">2-5 Years</option>
+                                    <option value="5-10 Years">5-10 Years</option>
+                                    
+                                  </select>
+                                </div>
+                              </div>
+
+                            
+                             
+                              <div class="form-group row">
+                                <label for="email" class="col-4 col-form-label">Phone Number*</label> 
+                                <div class="col-8">
+                                    <input type="number" class="form-control" name="phonenumber" placeholder="www.example.com" value=" ">
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label for="companyaddress" class="col-4 col-form-label"> Full Address</label> 
+                                <div class="col-8">
+                                    <input type="text" class="form-control"  name="fulladdress" placeholder="Enter Full Address" value="">
+                                </div>
+                              </div>
+                              
+                            
+                              <div class="form-group row">
+                                <label for="phone number" class="col-4 col-form-label">Job Skills </label> 
+                                <div class="col-8">
+                                    <input type="text" class="form-control" name="jobskills"  placeholder="Job Skills" value=" ">
+                                </div>
+                              </div> 
+                              <div class="form-group row">
+                                <label for="company email" class="col-4 col-form-label"> Email* </label> 
+                                <div class="col-8">
+                                    <input type="email" class="form-control" name="email"  value="">
+                                </div>
+                              </div> 
+                             
+                              <div class="form-group row">
+                                <label for="publicinfo" class="col-4 col-form-label"> Breif About You</label> 
+                                <div class="col-8">
+                                  <textarea id="publicinfo" name="companydescription" value=" " placeholder="Tell Something abour your company description" cols="40" rows="4" class="form-control" value=""></textarea>
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label for="company logo" class="col-4 col-form-label">Profile Image</label> 
+                                <div class="col-8">
+                                    <input type="file" class="text-center center-block file-upload" name="file" value=" " ></h4></label>
+                                </div>
+                              </div> 
+
+                              <div class="form-group row">
+                                <div class="offset-4 col-8">
+                                  <a class="btn btn-primary" href="/" role="button">Back</a>
+                                  <button name="submit" type="submit" class="btn btn-primary">Update Profile</button>
+                                </div>
+                                
+                              </div>
+                            </form>
+                    </div>
+                    
+		            </div>
+		            
+		        </div>
+		    </div>
+		
+	
+</div>
+
+                                                     
+<script>
+    $(document).ready(function() {
+    
+        
+    var readURL = function(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+    
+            reader.onload = function (e) {
+                $('.avatar').attr('src', e.target.result);
+            }
+    
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    
+    
+    $(".file-upload").on('change', function(){
+        readURL(this);
+    });
+    });
+    </script>
+
+<%- include('../partials/fotter.ejs') %> 
+<%- include('../partials/fotter.ejs') %> 

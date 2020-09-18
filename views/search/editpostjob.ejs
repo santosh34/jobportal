@@ -1,0 +1,159 @@
+<%- include('../partials/header.ejs') %> 
+<%- include('../partials/menu.ejs') %> 
+<div class="col-md-9 pr-10">
+    <div class="card">
+        <div class="card-body pr-5">
+            <div class="row">
+                <div class="col-12">
+                    <h4>Post New Job</h4>
+                    <hr>
+                </div>
+            </div>
+
+              
+            <% if(hasErrors) {%>
+                           
+              <div class="alert alert-danger">
+                 <a href="#" class="close" data-dismiss="alert" aria-label="close">
+                     &times;
+                 </a>
+                 <%= messages %>
+                  
+              </div>
+            <% } %>
+            
+            
+            <% if(success){%>
+            <div class="alert alert-success">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">
+              &times;</a>
+            <strong> <%= success %></strong>
+            </div>
+            <% } %>
+                   
+
+            <div class="row">
+                <div class="col-md-12">
+                    <form action="/employer/updatejobpost/<%= editpost._id%>" method="POST">
+                      <div class="form-group row">
+                        <label for="username" class="col-4 col-form-label">Job Title*</label> 
+                        <div class="col-8">
+                          <input id="title" name="jobtitle" placeholder="Enter Job Title" class="form-control here"  type="text" value="<%= editpost.jobtitle %> ">
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <label for="skills" class="col-4 col-form-label">Job Skills</label> 
+                        <div class="col-8">
+                          <input id="skills" name="jobskills" placeholder="Enter Job Skills" class="form-control here"  type="text" value="<%= editpost.jobskills %> ">
+                        </div>
+                      </div>
+                      <div class="form-group row"> 
+                        <div class="input-group">
+                          <label for="select" class="col-4 col-form-label">Job Type </label> 
+                          <div class="col-8">
+
+                          <select id="jobcategory" name="jobtype" class="custom-select" value="<%= editpost.jobtype %> ">
+                            <option value="" selected disabled hidden> Choose Job Type</option>
+                          <option value="Public Limited">Full Time</option>
+                          <option value="Private Limited">Part Time</option>
+                          <option value="PartnerShip">FreeLance</option>
+                          <option value="NGO">Intership</option>
+                          <option value="NGO">Hourly Paid</option>
+                          </select>
+                        </div>
+                        </div>
+                      </div>
+                      <div class="form-group row"> 
+                        <div class="input-group">
+                          <label for="select" class="col-4 col-form-label">Education Degree </label> 
+                          <div class="col-8">
+
+                          <select id="jobcategory" name="educationlevel" class="custom-select" value="<%= editpost.educationlevel %> ">
+                            <option value="" selected disabled hidden> Choose Education level</option>
+                            <option value="SEE">SEE</option>
+                          <option value="HSEB">Higher Secondary School</option>
+                          <option value="Bachelor">Bachelor Degree</option>
+                          <option value="Master">Master Degree </option>
+                          </select>
+                        </div>
+                        </div>
+                      </div>
+                    
+                      <div class="form-group row">
+                        <label for="select" class="col-4 col-form-label">Experience Level </label> 
+                        <div class="col-8">
+                          <option value="" selected disabled hidden> Choose Experience Level</option>
+                          <select id="experience-level" name="experiencelevel" class="custom-select" value="<%= editpost.jobexperiecncelevel %> ">
+                            <option value="Beginners">Beginners</option>
+                            <option value="Intermediate">Intermediate</option>
+                            <option value="Expert">Expert</option>
+                           </select>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="select" class="col-4 col-form-label">Working Experience  </label> 
+                        <div class="col-8">
+
+                          <select id="experience" name="jobexperience" class="custom-select" value="<%= editpost.jobexperience %> ">
+                            <option value="" selected disabled hidden> Choose Working Experience</option>
+                            <option value="0-1 Years">0-1 Years</option>
+                            <option value="1-2 Years">1-2 Years</option>
+                            <option value="2-5 Years">2-5 Years</option>
+                            <option value="5-10 Years">5-10 Years</option>
+                            
+                          </select>
+                        </div>
+                      </div>
+                     
+                      <div class="form-group row">
+                        <label for="select" class="col-4 col-form-label">Gender Requirment</label> 
+                        <div class="col-8">
+                          <select id="gender" name="gender" class="custom-select" value="<%= editpost.gender%> ">
+                            <option value="" selected disabled hidden> Choose Gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                            
+                            
+                          </select>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="website" class="col-4 col-form-label">Location</label> 
+                        <div class="col-8">
+                          <input id="website" name="location" placeholder="Enter location" class="form-control here" type="text" value="<%= editpost.location %> ">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="website" class="col-4 col-form-label">Expire Date</label> 
+                        <div class="col-8">
+                          <input id="website" name="jobexpire"  class="form-control here" type="date" value="<%= editpost.jobpostdate %> ">
+                        </div>
+                      </div>
+                    
+                   
+                      <div class="form-group row">
+                        <div class="offset-4 col-8">
+                          <button name="submit" type="submit" class="btn btn-primary">Update Job Post</button>
+                        </div>
+                      </div>
+                    </form>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<%- include('../partials/fotter.ejs') %> 
+
+<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+<script>
+  tinymce.init({
+    selector: 'textarea#editor',
+    menubar: false
+  });
+</script>

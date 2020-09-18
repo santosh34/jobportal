@@ -1,0 +1,175 @@
+<%- include('../partials/header.ejs') %> 
+
+<% if(hasErrors) {%>
+                           
+  <div class="alert alert-danger">
+     <a href="#" class="close" data-dismiss="alert" aria-label="close">
+         &times;
+     </a>
+     <%= messages %>
+      
+  </div>
+<% } %>
+
+
+<% if(success){%>
+<div class="alert alert-success">
+<a href="#" class="close" data-dismiss="alert" aria-label="close">
+  &times;</a>
+<strong> <%= success %></strong>
+</div>
+<% } %>
+<div class="container">
+    <br>
+	<div class="card">
+    <div class="row">
+    <div class="col-sm-3"><!--left col-->
+     <div class="text-center">
+                    
+      <% if(company.companylogo) { %>
+        <img src="/images/<%= company.companylogo %>" class="avatar img-circle img-thumbnail">
+       
+       <%}else{ %> 
+        <img src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png" alt="Avatar"  class="avatar img-circle img-thumbnail">
+
+        <% } %>
+            
+     
+        </div></hr><br>
+          </div><!--/col-3-->
+		        <div class="card-body">
+		            <div class="row">
+		                <div class="col-md-12">
+		                    <h4>Company Profile</h4>
+		                    <hr>
+		                </div>
+		            </div>
+		            <div class="row">
+		                <div class="col-md-12">
+                     
+		                    <form action="/employer/companyprofile" method="POST" enctype="multipart/form-data">
+                              <div class="form-group row">
+                                <label for="company" class="col-4 col-form-label">Company Name*</label> 
+                                <div class="col-8">
+                                    <input type="text" class="form-control" name="companyname" value="<%= company.companyname %> ">
+                                </div>
+                              </div>
+                             
+                              <div class="form-group row">
+                                <label for="select" class="col-4 col-form-label">Company Type </label> 
+                                <div class="col-8">
+                                  <select id="jobcategory" name="companytype" class="custom-select" >
+                                    <option value="Banks">Company Type</option>
+                                    <option value="Finance">Finanace</option>
+                                    <option value="SoftwareCompanies">Software Company</option>
+                                    <option value="NGO">NGO/INGO/Developement </option>
+                                    <option value="Hotels/Restaurent">Hotels/Restaurent</option>
+                                    <option value="Insurance">Insurance Companies</option>
+                                    <option value="RetailsShop">Retails/Shop</option>
+                                    <option value="Ecommerce">Ecommerce</option>
+                                    <option value="Ecommerce">Others</option>
+                                    </select>
+                                </div>
+                              </div>
+
+                              <div class="form-group row">
+                                <label for="select" class="col-4 col-form-label">Ownership </label> 
+                                <div class="col-8">
+                                  <select id="jobcategory" name="ownership" class="custom-select" value=" ">
+                                    <option value="Public Limited">Public Limited</option>
+                                    <option value="Private Limited">Private Limited</option>
+                                    <option value="PartnerShip">PartnerShip</option>
+                                    <option value="NGO">NGO </option>
+                                   </select>
+                                </div>
+                              </div>
+
+                             
+                              <div class="form-group row">
+                                <label for="email" class="col-4 col-form-label">Website*</label> 
+                                <div class="col-8">
+                                    <input type="text" class="form-control" name="website" placeholder="www.example.com" value="<%= company.website %> ">
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label for="companyaddress" class="col-4 col-form-label">Company Full Address</label> 
+                                <div class="col-8">
+                                    <input type="text" class="form-control"  name="companyaddress" placeholder="Enter Company Location" value="<%= company.companyaddress %> ">
+                                </div>
+                              </div>
+                              
+                              <div class="form-group row">
+                                <label for="media link" class="col-4 col-form-label">Social Media link</label> 
+                                <div class="col-8">
+                                    <input type="text" class="form-control" name="medialink" placeholder="https://www.creative-tim.com" value="<%= company.medialink %> ">
+                                </div>
+                              </div> 
+                              <div class="form-group row">
+                                <label for="phone number" class="col-4 col-form-label">Company Phone </label> 
+                                <div class="col-8">
+                                    <input type="text" class="form-control" name="companyphone"  placeholder="Enter Phone" value="<%= company.companyphone %> ">
+                                </div>
+                              </div> 
+                              <div class="form-group row">
+                                <label for="company email" class="col-4 col-form-label">Company Email* </label> 
+                                <div class="col-8">
+                                    <input type="email" class="form-control" name="companyemail"  placeholder="Enter Email" value="<%= company.companyemail %> ">
+                                </div>
+                              </div> 
+                             
+                              <div class="form-group row">
+                                <label for="publicinfo" class="col-4 col-form-label">Company Description</label> 
+                                <div class="col-8">
+                                  <textarea id="publicinfo" name="companydescription" value=" " placeholder="Tell Something abour your company description" cols="40" rows="4" class="form-control" value="<%= company.compaydescription %> "></textarea>
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label for="company logo" class="col-4 col-form-label">Company Logo</label> 
+                                <div class="col-8">
+                                    <input type="file" class="text-center center-block file-upload" name="file" value="<%= company.companylogo %> " ></h4></label>
+                                </div>
+                              </div> 
+
+                              <div class="form-group row">
+                                <div class="offset-4 col-8">
+                                  <a class="btn btn-primary" href="/employer/dashboard" role="button">Back</a>
+                                  <button name="submit" type="submit" class="btn btn-primary">Update My Profile</button>
+                                </div>
+                                
+                              </div>
+                            </form>
+                    </div>
+                    
+		            </div>
+		            
+		        </div>
+		    </div>
+		
+	
+</div>
+
+                                                     
+<script>
+    $(document).ready(function() {
+    
+        
+    var readURL = function(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+    
+            reader.onload = function (e) {
+                $('.avatar').attr('src', e.target.result);
+            }
+    
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    
+    
+    $(".file-upload").on('change', function(){
+        readURL(this);
+    });
+    });
+    </script>
+
+<%- include('../partials/fotter.ejs') %> 
