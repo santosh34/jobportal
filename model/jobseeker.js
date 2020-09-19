@@ -11,15 +11,31 @@ const jobseekerSchema =new Schema({
      },
     jobseekerpassword:{
         type:String
-    }
+    },
+    jobskills:{
+        type:String
+    },
+    preferredcategories:{
+        type:String
+     },
+    jobexperience:{
+        type:String
+    },
+    phonenumber:{
+        type:String
+    },
+    temporaryaddress:{
+        type:String
+     },
+    jobskills:{
+        type:String
+    },
+    aboutyou:{
+        type:String
+    },
+    avtar:{
+        type:String
+     }
 });
-jobseekerSchema.methods.encryptPassword = (jobseekerpassword) => {
-    return bcrypt.hashSync(jobseekerpassword, bcrypt.genSaltSync(10), null);
-}
-
-jobseekerSchema.methods.validPassword = function(jobseekerpassword) {
-    return bcrypt.compareSync(jobseekerpassword, this.jobseekerpassword);
-};
-
 
 module.exports = mongoose.model("JobSeeker", jobseekerSchema);
