@@ -1,12 +1,40 @@
 <%- include('../partials/header2.ejs') %>  
+
+<% if(hasErrors) {%>
+                           
+  <div class="alert alert-danger">
+     <a href="#" class="close" data-dismiss="alert" aria-label="close">
+         &times;
+     </a>
+     <%= messages %>
+      
+  </div>
+<% } %>
+
+
+<% if(success){%>
+<div class="alert alert-success">
+<a href="#" class="close" data-dismiss="alert" aria-label="close">
+  &times;</a>
+<strong> <%= success %></strong>
+</div>
+<% } %>
 <div class="container">
     <br>
 	<div class="card">
     <div class="row">
     <div class="col-sm-3"><!--left col-->
-     <div class="text-center">
-        <img src="/images/daru.png" class="avatar img-circle img-thumbnail">
+     <div class="text-center">       
+      <% if(profile.avtar) { %>
+        <img src="/images/<%= profile.avtar %>" class="avatar img-circle img-thumbnail">
+       
+       <%}else{ %> 
+        <img src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png" alt="Avatar"  class="avatar img-circle img-thumbnail">
+
+        <% } %>
       </div>
+              
+            
           </div><!--/col-3-->
 		        <div class="card-body">
 		            <div class="row">
@@ -22,22 +50,16 @@
                               <div class="form-group row">
                                 <label for="company" class="col-4 col-form-label">User Name*</label> 
                                 <div class="col-8">
-                                    <input type="text" class="form-control" name="username" value=" ">
+                                <input type="text" class="form-control" name="username" value="<%= profile.jobseekerusername %>  ">
                                 </div>
                               </div>
-                              <div class="form-group row">
-                                <label for="company" class="col-4 col-form-label">Job Skills*</label> 
-                                <div class="col-8">
-                                    <input type="text" class="form-control" name="jobskills" value=" ">
-                                </div>
-                              </div>
-                              
+
                              
                               <div class="form-group row">
                                 <label for="select" class="col-4 col-form-label">Preferred Categories </label> 
                                 <div class="col-8">
                                   <select id="jobcategory" name="preferredcategories" class="custom-select" >
-                                    <option value="Banks">Preferred Categories</option>
+                                    <option value="<%= profile.preeferredcategoriies %> ">Preferred Categories</option>
                                     <option value="Finance">Finanace</option>
                                     <option value="SoftwareCompanies">Software Company</option>
                                     <option value="NGO">NGO/INGO/Developement </option>
@@ -69,40 +91,33 @@
                               <div class="form-group row">
                                 <label for="email" class="col-4 col-form-label">Phone Number*</label> 
                                 <div class="col-8">
-                                    <input type="number" class="form-control" name="phonenumber" placeholder="www.example.com" value=" ">
+                                    <input type="number" class="form-control" name="phonenumber" placeholder="www.example.com" value=" <%= profile.phonenumber %>" ">
                                 </div>
                               </div>
                               <div class="form-group row">
                                 <label for="companyaddress" class="col-4 col-form-label"> Temporary Address</label> 
                                 <div class="col-8">
-                                    <input type="text" class="form-control"  name="temporaryaddress" placeholder="Enter Full Address" value="">
+                                    <input type="text" class="form-control"  name="temporaryaddress" placeholder="Enter Full Address" value="<%= profile.temporaryaddress %> ">
                                 </div>
                               </div>
                               
-                            
-                              <div class="form-group row">
-                                <label for="phone number" class="col-4 col-form-label">Job Skills </label> 
-                                <div class="col-8">
-                                    <input type="text" class="form-control" name="jobskills"  placeholder="Job Skills" value=" ">
-                                </div>
-                              </div> 
                               <div class="form-group row">
                                 <label for="company email" class="col-4 col-form-label"> Email* </label> 
                                 <div class="col-8">
-                                    <input type="email" class="form-control" name="email"  value="">
+                                    <input type="email" class="form-control" name="email"  value="<%= profile.jobseekeremail %> ">
                                 </div>
                               </div> 
                              
                               <div class="form-group row">
                                 <label for="publicinfo" class="col-4 col-form-label"> Breif About You</label> 
                                 <div class="col-8">
-                                  <textarea id="publicinfo" name="aboutyou" value=" " placeholder="Tell Something abour your company description" cols="40" rows="4" class="form-control" value=""></textarea>
+                                  <textarea id="publicinfo" name="aboutyou" value=" <%= profile.aboutyou%> " placeholder="Tell Something abour your company description" cols="40" rows="4" class="form-control" value=""></textarea>
                                 </div>
                               </div>
                               <div class="form-group row">
                                 <label for="company logo" class="col-4 col-form-label">Profile Image</label> 
                                 <div class="col-8">
-                                    <input type="file" class="text-center center-block file-upload" name="avtar" value=" " ></h4></label>
+                                    <input type="file" class="text-center center-block file-upload" name="file" value=" <%= profile.avtar %> " ></h4></label>
                                 </div>
                               </div> 
 

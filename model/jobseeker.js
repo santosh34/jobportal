@@ -12,9 +12,6 @@ const jobseekerSchema =new Schema({
     jobseekerpassword:{
         type:String
     },
-    jobskills:{
-        type:String
-    },
     preferredcategories:{
         type:String
      },
@@ -27,9 +24,7 @@ const jobseekerSchema =new Schema({
     temporaryaddress:{
         type:String
      },
-    jobskills:{
-        type:String
-    },
+
     aboutyou:{
         type:String
     },

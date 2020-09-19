@@ -70,7 +70,7 @@ module.exports.postCompanyProfilePage =(req,res,next)=>{
             companyprofile.companyphone=req.body.companyphone;
             companyprofile.companyemail=req.body.companyemail;
             companyprofile.companydescription=req.body.companydescription;
-            companyprofile.companylogo=req.file.filename
+            companyprofile.companylogo=req.file.file
 
         }else{
             console.log('image not uploaded plz upload')
