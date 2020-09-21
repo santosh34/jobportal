@@ -1,4 +1,5 @@
 var passport = require('passport');
+const bcrypt = require('bcrypt-nodejs');
 var LocalStrategy= require('passport-local').Strategy;
 var User = require('../model/user');
 const JobSeeker = require('../model/jobseeker');
@@ -16,9 +17,6 @@ passport.deserializeUser((id,done)=>{
     User.findById(id, function(err, user) {
             done(err, user);
     });
-    JobSeeker.findById(id, function(err, user) {
-        done(err, user);
-});
 });
 
 

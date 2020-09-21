@@ -28,9 +28,22 @@ const jobseekerSchema =new Schema({
     aboutyou:{
         type:String
     },
+    appliedjob:[{
+            type: Schema.Types.ObjectId,
+            ref: "PostJob"
+        }],
+        
     avtar:{
         type:String
      }
 });
+jobseekerSchema.methods.encryptPassword = (jobseekerpassword) => {
+    return bcrypt.hashSync(jobseekerpassword, bcrypt.genSaltSync(10), null);
+}
+
+jobseekerSchema.methods.validPassword = function(jobseekerpassword) {
+    return bcrypt.compareSync(jobseekerpassword, this.jobseekerpassword);
+};
+
 
 module.exports = mongoose.model("JobSeeker", jobseekerSchema);

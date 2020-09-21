@@ -1,0 +1,42 @@
+
+<%- include('../partials/header2.ejs') %> 
+<%- include('../partials/jobseekermenu.ejs') %>   
+
+<div class="col main p-10 ml-5">
+    <h1 class="display-4 d-none d-sm-block">
+
+    
+
+     <% if(job){%>
+    <% if((job.length) ==0){%>
+        <h1>Sorry, you didn't posted any job yet!</h1>
+    <% }else{ %>
+    <% for(let i=0;i<job.length; i++) { %>
+    <div class="row mb-5">
+        <div class="col-xl-8">
+            <div class="card bg-success text-dark h-100">
+                <div class="card-body bg-light">
+                    <div class="rotate">
+                        <h6>Company Name:<%= job[i].jobtitle%> </h6>
+                        <h6>Job Title:<%= job[i].jobtype %> </h6>
+                        <h6>Job level :<%= job[i].jobexperiencelevel%></h6>
+                        <h6>Post at :<%= job[i].jobpostdate %></h6>
+                    </div>
+                    <h6 class="text-uppercase"><%= job[i].skills %> </h6>
+                     <div class="items-link items-link2 f-right">
+                        <span><%= moment(job[i].jobpostdate,"dddd, MMMM Do YYYY, h:mm:ss a").fromNow() %></span>
+                    </div>
+                    <div class="rotate " >
+                        <a href="/jobseeker/appllyforjob/<%= job[i]._id %> " class="btn btn-primary btn- active" role="button" aria-pressed="true">Apply</a>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+     </div>
+   <% } %>
+    <% } %>
+    
+<% } %>
+   
+<%- include('../partials/fotter.ejs') %>  

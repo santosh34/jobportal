@@ -1,0 +1,36 @@
+
+<%- include('../partials/header2.ejs') %> 
+<%- include('../partials/jobseekermenu.ejs') %>   
+<h1>applied job</h1>
+
+<div class="col main p-10 ml-5">
+    <h1 class="display-4 d-none d-sm-block">
+        <% if(job.appliedjob){%>
+            <% if((job.appliedjob.length) ==0){%>
+                <h1>Sorry, you didn't applied any job yet!</h1>
+            <% }else{ %>
+    
+
+    <% for(let i=0;i<job.appliedjob.length; i++) { %>
+    <div class="row mb-5">
+        <div class="col-xl-8">
+            <div class="card bg-success text-dark h-100">
+                <div class="card-body bg-light">
+                    <div class="rotate">
+                        <h6>Company Name:<%=job.appliedjob[i].jobtitle%> </h6>
+                        <h6>JobType:<%=job.appliedjob[i].jobtype%> </h6>
+                       
+                    </div>
+                   
+                    
+                </div>
+            </div>
+        </div>
+     </div>
+   <% } %>
+   <% } %>
+
+   <% } %>
+
+   
+<%- include('../partials/fotter.ejs') %>  

@@ -89,7 +89,7 @@ module.exports.getJobSeekerRegisterPage =(req,res,next)=>{
  
  module.exports.getJobSeekerLogoutPage =(req,res,next)=>{
      req.session.isjobseekerLoggedIn = false;
-     res.redirect("/");
+     res.redirect("/landingpage");
  }
 
 
