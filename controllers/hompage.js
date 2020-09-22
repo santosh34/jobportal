@@ -34,7 +34,7 @@ module.exports.getEmployeeHomePage=(req,res, next)=>{
             .then(result=>{
                PostJob.countDocuments({postuserid:req.user._id})
                .then(count=>{
-                  res.render('employer/homepage',{title:'Home Page',user:req.user,isauth:isauth,count:count,result:result});
+                  res.render('employer/homepage',{title:'Home Page',user:req.user,isauth:isauth,count:count,result:result,  path: '/employee/dashboard'});
                })
               })
             })

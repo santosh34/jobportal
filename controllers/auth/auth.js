@@ -42,7 +42,7 @@ module.exports.postEmployeeLoginPage =(req,res,next)=>{
              .then(count=>{
                 console.log(count)
                 console.log(result)
-                res.render('employer/homepage',{title:'Employee Dashboard',user:req.user,isauth:req.session.isLoggedIn,count:count,result:result});
+                res.render('employer/homepage',{title:'Employee Dashboard',user:req.user,isauth:req.session.isLoggedIn,count:count,result:result, path: '/employee/dashboard'});
              })
             })
           })

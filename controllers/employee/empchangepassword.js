@@ -5,7 +5,7 @@ var User = require('../../model/user');
 module.exports.getEmployeeChangePassword =(req,res,next)=>{
     var errors = req.flash('error');
     res.render('employer/changepassword',{title:' Employee Change password',user:req.user,isauth:req.session.isLoggedIn,
-    messages:errors,hasErrors:errors.length>0,success:''});
+    messages:errors,hasErrors:errors.length>0,success:'',path:'/employer/changepassword'});
 }
 
 module.exports.postEmployeeChangePassword=(req,res,next)=>{
@@ -27,7 +27,7 @@ module.exports.postEmployeeChangePassword=(req,res,next)=>{
                         console.log('password is not valid old')
                          var errors = "Old password is incorrect"
                          res.render('employer/changepassword',{title:'change password',isauth:req.session.isLoggedIn,user:req.user,
-                         success:'', messages:errors,hasErrors:errors.length>0});
+                         success:'', messages:errors,hasErrors:errors.length>0,path:'/employer/changepassword'});
                          return;
                          
                     }else{
@@ -43,7 +43,7 @@ module.exports.postEmployeeChangePassword=(req,res,next)=>{
                           var errors = req.flash('error');
                           //console.log('password changed')
                           res.render('employer/changepassword',{title:'Employee changepw',user:req.user,newuser:newuser,success:success,
-                           isauth:req.session.isLoggedIn,messages:errors,hasErrors:errors.length>0});
+                           isauth:req.session.isLoggedIn,messages:errors,hasErrors:errors.length>0,path:'/employer/changepassword'});
                            return;
                          })
                          .catch((err) => {console.log(err)})

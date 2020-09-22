@@ -52,14 +52,12 @@
                         <div class="input-group">
                           <label for="select" class="col-4 col-form-label">Job Type </label> 
                           <div class="col-8">
-
-                          <select id="jobcategory" name="jobtype" class="custom-select" value="<%= editpost.jobtype %> ">
-                            <option value="" selected disabled hidden> Choose Job Type</option>
-                          <option value="Public Limited">Full Time</option>
-                          <option value="Private Limited">Part Time</option>
-                          <option value="PartnerShip">FreeLance</option>
-                          <option value="NGO">Intership</option>
-                          <option value="NGO">Hourly Paid</option>
+                        <select id="jobcategory" name="jobtype" class="custom-select" >
+                        <option value="Public Limited" <% if(editpost.jobtype =="Public Limited"){ %> selected <% } %>>Full Time</option>
+                          <option value="Private Limited" <% if(editpost.jobtype =="Private Limited"){ %> selected <% } %>>Part Time</option>
+                          <option value="PartnerShip" <% if(editpost.jobtype =="PartnerShip"){%> selected <% } %>>FreeLance</option>
+                          <option value="NGO" <% if(editpost.jobtype =="NGO"){%> selected <% }%>>Intership</option>
+                          <option value="Hourly Paid" <% if(editpost.jobtype =="Hourly Paid"){ %> selected <% } %>>Hourly Paid</option>
                           </select>
                         </div>
                         </div>
@@ -70,11 +68,11 @@
                           <div class="col-8">
 
                           <select id="jobcategory" name="educationlevel" class="custom-select" value="<%= editpost.educationlevel %> ">
-                            <option value="" selected disabled hidden> Choose Education level</option>
-                            <option value="SEE">SEE</option>
-                          <option value="HSEB">Higher Secondary School</option>
-                          <option value="Bachelor">Bachelor Degree</option>
-                          <option value="Master">Master Degree </option>
+                           
+                            <option value="SEE"  <% if(editpost.educationlevel =="SEE"){ %> selected <% } %>>SEE</option>
+                          <option value="HSEB"  <% if(editpost.educationlevel =="HSEB"){ %> selected <% } %>>Higher Secondary School</option>
+                          <option value="Bachelor"  <% if(editpost.educationlevel =="Bachelor"){ %> selected <% } %>>Bachelor Degree</option>
+                          <option value="Master"  <% if(editpost.educationlevel =="Master"){ %> selected <% } %>>Master Degree </option>
                           </select>
                         </div>
                         </div>
@@ -84,10 +82,10 @@
                         <label for="select" class="col-4 col-form-label">Experience Level </label> 
                         <div class="col-8">
                           <option value="" selected disabled hidden> Choose Experience Level</option>
-                          <select id="experience-level" name="experiencelevel" class="custom-select" value="<%= editpost.jobexperiecncelevel %> ">
-                            <option value="Beginners">Beginners</option>
-                            <option value="Intermediate">Intermediate</option>
-                            <option value="Expert">Expert</option>
+                          <select id="experience-level" name="experiencelevel" class="custom-select" >
+                            <option value="Beginners" <% if(editpost.experiencelevel =="Beginners"){ %> selected <% } %>>Beginners</option>
+                            <option value="Intermediate" <% if(editpost.experiencelevel =="Intermediate"){ %> selected <% } %>>Intermediate</option>
+                            <option value="Expert" <% if(editpost.experiencelevel =="Expert"){ %> selected <% } %>>Expert</option>
                            </select>
                         </div>
                       </div>
@@ -97,10 +95,10 @@
 
                           <select id="experience" name="jobexperience" class="custom-select" value="<%= editpost.jobexperience %> ">
                             <option value="" selected disabled hidden> Choose Working Experience</option>
-                            <option value="0-1 Years">0-1 Years</option>
-                            <option value="1-2 Years">1-2 Years</option>
-                            <option value="2-5 Years">2-5 Years</option>
-                            <option value="5-10 Years">5-10 Years</option>
+                            <option value="0-1 Years" <% if(editpost.jobexperience =="0-1 Years"){ %> selected <% } %>>0-1 Years</option>
+                            <option value="1-2 Years" <% if(editpost.jobexperience =="1-2 Years"){ %> selected <% } %>>1-2 Years</option>
+                            <option value="2-5 Years" <% if(editpost.jobexperience =="2-5 Years"){ %> selected <% } %>>2-5 Years</option>
+                            <option value="5-10 Years" <% if(editpost.jobexperience =="5-10 Years"){ %> selected <% } %>>5-10 Years</option>
                             
                           </select>
                         </div>
@@ -111,8 +109,8 @@
                         <div class="col-8">
                           <select id="gender" name="gender" class="custom-select" value="<%= editpost.gender%> ">
                             <option value="" selected disabled hidden> Choose Gender</option>
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
+                            <option value="Male" <% if(editpost.gender =="Male"){ %> selected <% } %>>Male</option>
+                            <option value="Female" <% if(editpost.gender =="Female"){ %> selected <% } %>>Female</option>
                             <option value="Other">Other</option>
                             
                             
@@ -128,7 +126,7 @@
                       <div class="form-group row">
                         <label for="website" class="col-4 col-form-label">Expire Date</label> 
                         <div class="col-8">
-                          <input id="website" name="jobexpire"  class="form-control here" type="date" value="<%= editpost.jobpostdate %> ">
+                          <input id="date" name="jobexpire"  class="form-control here" type="date" value="<%= editpost.jobexpire%> ">
                         </div>
                       </div>
                     

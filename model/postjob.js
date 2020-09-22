@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-
+const moment = require('moment')
 const postjobSchema =new Schema({
     jobtitle:{
         type:String
@@ -30,7 +30,8 @@ const postjobSchema =new Schema({
         type:String
     },
     jobexpire:{
-        type:Date
+           type:String,
+
     },
     jobdescription:{
         type:String,

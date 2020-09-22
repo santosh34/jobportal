@@ -23,7 +23,8 @@ const fileStorage = multer.diskStorage({
         callback(null, true);
     }
     else {
-        callback(null, flase);
+        callback(null, false);
+        console.log('this is not image')
     }
   };
   var upload=(multer({storage: fileStorage,fileFilter: fileFilter,limits:{
@@ -49,6 +50,7 @@ module.exports =router;
 function userprofilevalidate(req, res, next){
   req.checkBody('username', 'Username is Required').notEmpty();
   req.checkBody('userphone', 'Phone numer is not valid').isNumeric();
+  req.checkBody('userphone', 'Phone numer Should be Minimum 10 digit').isLength({ min: 10 })
 
   var userErrors = req.validationErrors();
    if(userErrors){
@@ -71,12 +73,11 @@ function userprofilevalidate(req, res, next){
 function companyprofilevalidate(req, res, next){
     req.checkBody('companyaddress', 'Company Address is Required').notEmpty();
     req.checkBody('companyemail', 'Company Email is Invalid').isEmail();
-    req.checkBody('companyphone', 'Company Phone is Required').notEmpty();
-
+    req.checkBody('companyphone', 'Company Phone is Required').notEmpty()
+    req.checkBody('ownership', 'Ownership must be selected').notEmpty()
+    req.checkBody('companytype', 'Company type must be selected').notEmpty()
   
-  
-   
-    var companyErrors = req.validationErrors();
+      var companyErrors = req.validationErrors();
   
     if(companyErrors){
         var messages = [];

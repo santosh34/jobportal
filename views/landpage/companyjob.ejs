@@ -22,10 +22,12 @@
                         <h6>Job Title:<%= alljob[i].jobtitle %> </h6>
                         <h6>Job level :<%= alljob[i].jobexperiencelevel%></h6>
                         <h6>Post at :<%= alljob[i].jobpostdate %></h6>
+                       <h5><%= moment(alljob[i].jobexpire).diff(moment(),'days') %></span>days %></h5> 
                     </div>
                     <h6 class="text-uppercase"><%= alljob[i].skills %> </h6>
                      <div class="items-link items-link2 f-right">
                                         <span><%= moment(alljob[i].jobpostdate,"dddd, MMMM Do YYYY, h:mm:ss a").fromNow() %></span>
+                                       
                     </div>
                     <div class="rotate " >
                         <a href="/company/editjob/" class="btn btn-primary btn- active" role="button" aria-pressed="true">Apply</a>

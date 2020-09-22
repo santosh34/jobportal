@@ -34,7 +34,7 @@ function postjobvalidate(req, res, next){
         req.flash('error', messages);
         var errors = req.flash('error');
         res.render('employer/postjob',{title:'Post Jobs',messages:errors,
-     hasErrors:errors.length>0,success:'',isauth:req.session.isLoggedIn,user:req.user});
+     hasErrors:errors.length>0,success:'',isauth:req.session.isLoggedIn,user:req.user,path:'/employer/postjob'});
     }else{
         return next();
     }

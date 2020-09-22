@@ -1,22 +1,21 @@
 var User = require('../../model/user');
-const mongoose=require('mongoose')
+const moment=require('moment')
 var PostJob = require('../../model/postjob');
 
+
+
+
 module.exports.getSearchJobPage =(req,res,next)=>{
-  const userid=req.params.userid
  
-      PostJob.find
-      ({postuserid:userid})
+   PostJob.find
+      ({postuserid:req.user._id})
        .then(getpostjob=>{
       console.log(getpostjob)
-       res.render('search/search',{title:'Search Job Post',user:req.user,isauth:req.session.isLoggedIn,getpostjob:getpostjob});
+       res.render('search/search',{title:'Search Job Post',user:req.user,isauth:req.session.isLoggedIn,getpostjob:getpostjob,path:'/employer/searchjob',moment:moment});
    })
-
-   .catch(err=>{
+.catch(err=>{
        console.error(err,'Get User profile error')
    })
- 
-
 }
 
 module.exports.getEditJobPage=(req,res,next) => {
@@ -25,7 +24,7 @@ module.exports.getEditJobPage=(req,res,next) => {
    .then(editpost=>{
        var errors = req.flash('error');
        res.render('search/editpostjob',{title:'Edit Post Job',editpost:editpost, messages:errors,
-        hasErrors:errors.length>0,success:'',user:req.user,isauth:req.session.isLoggedIn});
+        hasErrors:errors.length>0,success:'',user:req.user,isauth:req.session.isLoggedIn,moment:moment,path:'/employer/searchjob'});
    
    })
 }
@@ -50,7 +49,7 @@ module.exports.postUpdateJobPage=(req,res,next) => {
           var errors = req.flash('error');
           var success = "New Job Has been Posted Successfully";
           res.render('search/editpostjob',{title:' Update Edit Post Job', editpost:editpost,messages:errors,
-          hasErrors:errors.length>0,success:success,user:req.user,isauth:req.session.isLoggedIn});
+          hasErrors:errors.length>0,success:success,user:req.user,isauth:req.session.isLoggedIn,moment:moment,path:'/employer/searchjob'});
       })
       .catch(err =>{
           console.log(err)
@@ -61,32 +60,36 @@ module.exports.postUpdateJobPage=(req,res,next) => {
 
 
 module.exports.deleteJobPage=(req, res, next)=>{
-  const userid=  User.findOne({_id:req.user._id}).select('id')
-  const postjob=req.params.postjob
-  PostJob.findByIdAndDelete({_id:postjob},(err,getpostjob)=>{
-      if(err){
-          console.log(err)
-      }else{
-          //console.log('job deleted successfully')
-         res.redirect('/employer/searchjob/' +userid)
-      }
-  })
 
+  var id=req.params.postjob;
+  PostJob.findByIdAndDelete({_id:id})
+  .then(jobdelete=>{
+    console.log('jobdelete')
+    res.redirect('/employer/searchjob')
+  })
 }
 
-
-
-module.exports.getFilterSearchJobPage=(req,res,next) =>{
+module.exports.postFilterSearchJobPage=(req,res,next) =>{
   var filterjobtitle= req.body.title;
-  var filterjobtype = req.body.jobtype;
   var filterexperiencelevel = req.body.experiencelevel
+  var filterjobtype = req.body.jobtype;
+
 
 if(filterjobtitle !='' && filterjobtype!='' && filterexperiencelevel !=''){
-    
     var filterparameter={ $and: [{jobtitle: filterjobtitle},
     {$and:[{jobtype: filterjobtype},{jobexperiencelevel:filterexperiencelevel}]}
-    ]}
+  ]}
 
+  }else if(filterjobtitle !='' && filterjobtype =='' && filterexperiencelevel !=''){
+    var filterparameter={ $and:[{ jobtitle:filterjobtitle},{jobexperiencelevel:fltrerexperiencelevel}]
+       }
+  }else if(filterjobtitle =='' && filterjobtype !='' && filterexperiencelevel !=''){
+    var filterparameter={ $and:[{ jobtype:filterjobtype},{jobexperiencelevel:filterexperiencelevel}]
+       }
+  }else if(filterjobtitle =='' && filterjobtype =='' && filterexperiencelevel !=''){
+
+    var filterparameter={jobexperiencelevel:filterexperiencelevel
+       }
   }else{
     var filterparameter={}
   }
@@ -95,14 +98,12 @@ jobfiltercategory.exec(function(err,getpostjob){
   if(err){
     console.log(err)
   }else{
-    console.log(getpostjob)
-    res.render('search/search',{title:'search result',user:req.user,isauth:req.session.isLoggedIn,getpostjob:getpostjob});
+    console.log(getpostjob,'res')
+    res.render('search/search',{title:'search result',user:req.user,isauth:req.session.isLoggedIn,getpostjob:getpostjob,path:'/employer/searchjob'});
   
   }
-})
+})}
 
- 
-}
 
 
 module.exports.getAutoSearchJobPage=(req,res,next)=>{
@@ -128,4 +129,8 @@ res.jsonp(result);
 }}
 );
 }
+
+
+
+
 

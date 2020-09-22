@@ -1,17 +1,12 @@
 <%- include('../partials/header.ejs') %> 
-<br>
 
 <div class="container-fluid bg-light ">
   <form action="/employer/filtersearch" method="POST"> 
   <h5>Search By Category</h5>
   <hr>
-  
-	<div class="row align-items-center justify-content-center">
-            	        
-                		<div class="col-md-2 pt-3">
-                     
-                        <div class="form-group">
-                          
+  <div class="row align-items-center justify-content-center">
+            	        <div class="col-md-2 pt-3">
+                     <div class="form-group">
                           <input type="text" id="searchjob" name="title" class="form-control" placeholder="Search by Jobtitle" style="width:100%" >
                         
                        </div>
@@ -45,9 +40,9 @@
                   </div>
               </div>
 
-            </form>           
-                          
-</div>
+                    
+            </form>                       
+          </div>
 
 <%- include('../partials/menu.ejs') %> 
 
@@ -66,6 +61,7 @@
                       <th>Expire Date </i></th>
                       <th>Experience Level</th>
                       <th>Job Type</i></th>
+                      <th>Remaning days</i></th>
                       <th>Actions</th>
                   </tr>
               </thead>
@@ -81,8 +77,9 @@
                       <td><%= row.jobexpire %></td>
                       <td><%= row.jobexperiencelevel %></td>
                       <td><%= row.jobtype %></td>
+                      <td> <%= moment(row.jobexpire).diff(moment(),'days') %> days</td>
                       <td>
-                    
+                       
                           <a href="/employer/editjob/<%= row._id%> " class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
                           <a href="/employer/deletejob/<%=row._id %> " class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
                       </td>
@@ -95,10 +92,13 @@
                   <% } %>
                           
               </tbody>
+              
           </table>  
        </div>  
-  
-</div>   
+     
+</div> 
+
+
 <script>
   $(function(){
  $('#searchjob').autocomplete({

@@ -4,7 +4,7 @@ const router= express.Router();
 
 
 //Get =>Home Page
-router.get("/searchjob/:userid",SearchJobPageControllers.getSearchJobPage);
+router.get("/searchjob",SearchJobPageControllers.getSearchJobPage);
 
 
 router.get("/editjob/:editjob",SearchJobPageControllers.getEditJobPage);
@@ -14,9 +14,15 @@ router.post("/updatejobpost/:updatejob",postjobvalidate,SearchJobPageControllers
 
 router.get("/deletejob/:postjob",SearchJobPageControllers.deleteJobPage);
 
-router.post("/filtersearch",SearchJobPageControllers.getFilterSearchJobPage);
+
+router.post("/filtersearch",SearchJobPageControllers.postFilterSearchJobPage)
+
 
 router.get("/autocomplete/",SearchJobPageControllers.getAutoSearchJobPage);
+
+
+
+
 
 
 module.exports =router;

@@ -5,7 +5,7 @@ var PostJob = require('../../model/postjob');
 module.exports.getPostJobPage=(req,res,next)=>{
     var errors = req.flash('error');
     res.render('employer/postjob',{title:'Post New Job', messages:errors,
-    hasErrors:errors.length>0,success:'',user:req.user,isauth:req.session.isLoggedIn,});
+    hasErrors:errors.length>0,success:'',user:req.user,isauth:req.session.isLoggedIn,path:'/employer/postjob'});
 }
 
 
@@ -47,7 +47,7 @@ module.exports.postPostJobPage =(req,res,next)=>{
             var errors = req.flash('error');
             var success = "New Job Has been Posted Successfully";
             res.render('employer/postjob',{title:'Post New Job', messages:errors,
-            hasErrors:errors.length>0,success:success,user:req.user,isauth:req.session.isLoggedIn});
+            hasErrors:errors.length>0,success:success,user:req.user,isauth:req.session.isLoggedIn,path:'/employer/postjob'});
         }
     })
 }
