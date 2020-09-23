@@ -7,7 +7,7 @@ module.exports.getJobSeekerMatchingJobpage =(req,res,next)=>{
   .then(job =>{
     //console.log(job)
     res.render('jobseeker/matchingjob',{title:'Matching Job',job:job,
-    isjobseekerauth:req.session.isjobseekerLoggedIn,user:req.session.jobseeker,moment:moment});
+    isjobseekerauth:req.session.isjobseekerLoggedIn,user:req.session.jobseeker,moment:moment,path:'/jobseeker/matchingjob',editingmode:false});
 
   })
   .catch(err =>{
@@ -18,6 +18,7 @@ module.exports.getJobSeekerMatchingJobpage =(req,res,next)=>{
 
 //applied jobposts
 module.exports.getJobSeekerAppliedJobpage =(req,res,next)=>{
+  const editingmode=req.query.edit
  const postjobid =req.params.postjobid
  JobSeeker.findOne({_id:req.session.jobseeker})
 .then(result=>{
@@ -37,25 +38,4 @@ module.exports.getJobSeekerAppliedJobpage =(req,res,next)=>{
   console.log(err)
 })
 }
-
-
-module.exports.getJobSeekerAllAppliedJobpage=(req,res,next)=>{
-  JobSeeker.findOne({_id:req.session.jobseeker}).populate('appliedjob')
-  .then(job=>{
-    console.log(job)
-    res.render('jobseeker/appliedjob',{title:'applied job',job:job,
-    isjobseekerauth:req.session.isjobseekerLoggedIn,user:req.session.jobseeker,moment:moment});
-      
-  })
-    
-  .catch(err =>{
-    console.log(err)
-  })
-}
-
-module.exports.getJobSeekerlistAppliedJobpage=(req,res,next)=>{
-  res.render('jobseeker/appliedjob',{title:'applied job',job:job,
-  isjobseekerauth:req.session.isjobseekerLoggedIn,user:req.session.jobseeker,moment:moment});
-}
-
 

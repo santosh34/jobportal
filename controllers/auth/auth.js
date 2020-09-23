@@ -84,7 +84,7 @@ module.exports.getJobSeekerRegisterPage =(req,res,next)=>{
  module.exports.postJobSeekerLoginPage =(req,res,next)=>{
      var errors = req.flash('error');
     res.render('jobseeker/homepage',{title:'Jobseeker Login',user:req.user,isjobseekerauth:req.session.isjobseekerLoggedIn,messages:errors,
-    hasErrors:errors.length>0});
+    hasErrors:errors.length>0,path:'/'});
  }
  
  module.exports.getJobSeekerLogoutPage =(req,res,next)=>{
@@ -92,4 +92,10 @@ module.exports.getJobSeekerRegisterPage =(req,res,next)=>{
      res.redirect("/landingpage");
  }
 
+
+ module.exports.getJobSeekerLogoutPage =(req,res,next)=>{
+    req.session.isLoggedIn = false;
+    console.log('logout')
+    res.redirect("/landingpage");
+}
 

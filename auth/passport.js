@@ -111,6 +111,7 @@ passport.use('jobseeker.signup',new LocalStrategy({
             var newJobSeeker = new JobSeeker();
             newJobSeeker.jobseekerusername = req.body.jobseekerusername;
             newJobSeeker.jobseekeremail = req.body.jobseekeremail;
+            newJobSeeker.preferencejob = req.body.preferencejob
             newJobSeeker.jobseekerpassword = newJobSeeker.encryptPassword(req.body.jobseekerpassword);
            
             //save the user

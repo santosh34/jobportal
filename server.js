@@ -30,6 +30,7 @@ const ALLJobLevelPageRouter=require("./route/landpage/joblevel")
 //jobseeker router
 const JobSeekerProfilePageRouter=require("./route/jobseeker/profile");
 const JobSeekerMatchingJobPageRouter=require("./route/jobseeker/matchingjob")
+const JobSeekerAppliedJobPageRouter=require("./route/jobseeker/appliedjob")
 
 
 const app=express();
@@ -93,6 +94,7 @@ app.use('/',ALLJobLevelPageRouter)
 //jobseeker page routers
 app.use('/jobseeker',JobSeekerProfilePageRouter)
 app.use('/jobseeker',JobSeekerMatchingJobPageRouter)
+app.use('/jobseeker',JobSeekerAppliedJobPageRouter)
 
 
 //404 error server

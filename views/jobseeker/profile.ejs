@@ -29,7 +29,7 @@
         <img src="/images/<%= profile.avtar %>" class="avatar img-circle img-thumbnail">
        
        <%}else{ %> 
-        <img src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png" alt="Avatar"  class="avatar img-circle img-thumbnail">
+        <img src="/images/user.jpg" alt="Avatar"  class="avatar img-circle img-thumbnail">
 
         <% } %>
       </div>
@@ -59,15 +59,15 @@
                                 <label for="select" class="col-4 col-form-label">Preferred Categories </label> 
                                 <div class="col-8">
                                   <select id="jobcategory" name="preferredcategories" class="custom-select" >
-                                    <option value="<%= profile.preeferredcategoriies %> ">Preferred Categories</option>
-                                    <option value="Finance">Finanace</option>
-                                    <option value="SoftwareCompanies">Software Company</option>
-                                    <option value="NGO">NGO/INGO/Developement </option>
-                                    <option value="Hotels/Restaurent">Hotels/Restaurent</option>
-                                    <option value="Insurance">Insurance Companies</option>
-                                    <option value="RetailsShop">Retails/Shop</option>
-                                    <option value="Ecommerce">Ecommerce</option>
-                                    <option value="Ecommerce">Others</option>
+                                    <option value="" <% if(profile.preferredcategories ==""){ %> selected <% } %>>Preferred Categories</option>
+                                    <option value="Finance" <% if(profile.preferredcategories =="Finance"){ %> selected <% } %>>Finanace</option>
+                                    <option value="SoftwareCompanies"<% if(profile.preferredcategories =="SoftwareCompanies"){ %> selected <% } %>>Software Company</option>
+                                    <option value="NGO" <% if(profile.preferredcategories =="NGO"){ %> selected <% } %>>NGO/INGO/Developement </option>
+                                    <option value="Hotels/Restaurent" <% if(profile.preferredcategories =="Hotels/Restaurent"){ %> selected <% } %>>Hotels/Restaurent</option>
+                                    <option value="Insurance" <% if(profile.preferredcategories =="Insurance"){ %> selected <% } %>>Insurance Companies</option>
+                                    <option value="RetailsShop" <% if(profile.preferredcategories =="RetailsShop"){ %> selected <% } %>>Retails/Shop</option>
+                                    <option value="Ecommerce" <% if(profile.preferredcategories =="Ecommerce"){ %> selected <% } %>>Ecommerce</option>
+                                    <option value="others" <% if(profile.preferredcategories =="others"){ %> selected <% } %>>Others</option>
                                     </select>
                                 </div>
                               </div>
@@ -77,10 +77,10 @@
                                 <div class="col-8">
                                   <select id="experience" name="jobexperience" class="custom-select">
                                     <option value="" selected disabled hidden> Choose Working Experience</option>
-                                    <option value="0-1 Years">0-1 Years</option>
-                                    <option value="1-2 Years">1-2 Years</option>
-                                    <option value="2-5 Years">2-5 Years</option>
-                                    <option value="5-10 Years">5-10 Years</option>
+                                    <option value="0-1 Years" <% if(profile.jobexperience =="0-1 Years"){ %> selected <% } %>>0-1 Years</option>
+                                    <option value="1-2 Years" <% if(profile.jobexperience =="1-2 Years"){ %> selected <% } %>>1-2 Years</option>
+                                    <option value="2-5 Years" <% if(profile.jobexperience =="2-5 Years"){ %> selected <% } %>>2-5 Years</option>
+                                    <option value="5-10 Years" <% if(profile.jobexperience =="5-10 Years"){ %> selected <% } %>>5-10 Years</option>
                                     
                                   </select>
                                 </div>
@@ -91,7 +91,7 @@
                               <div class="form-group row">
                                 <label for="email" class="col-4 col-form-label">Phone Number*</label> 
                                 <div class="col-8">
-                                    <input type="number" class="form-control" name="phonenumber" placeholder="www.example.com" value=" <%= profile.phonenumber %>" ">
+                                    <input type="number" class="form-control" name="phonenumber" placeholder="" value="<%= profile.phonenumber %>">
                                 </div>
                               </div>
                               <div class="form-group row">
@@ -104,7 +104,7 @@
                               <div class="form-group row">
                                 <label for="company email" class="col-4 col-form-label"> Email* </label> 
                                 <div class="col-8">
-                                    <input type="email" class="form-control" name="email"  value="<%= profile.jobseekeremail %> ">
+                                    <input type="email" class="form-control" name="email"  value="<%= profile.jobseekeremail %> " disabled>
                                 </div>
                               </div> 
                              

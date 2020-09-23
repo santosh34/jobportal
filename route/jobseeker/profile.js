@@ -29,7 +29,7 @@ const fileStorage = multer.diskStorage({
   }}));
 
 
-router.get('/profile/:id',JobSeekerControllers.getJobSeekerProfilepage)
+router.get('/profile',JobSeekerControllers.getJobSeekerProfilepage)
 
 
 router.post('/profile', upload.single('file'),jobseekerprofilevalidate,JobSeekerControllers.postJobSeekerProfilepage)

@@ -13,7 +13,7 @@
     <% }else{ %>
     <% for(let i=0;i<job.length; i++) { %>
     <div class="row mb-5">
-        <div class="col-xl-8">
+        <div class="col-xl-12">
             <div class="card bg-success text-dark h-100">
                 <div class="card-body bg-light">
                     <div class="rotate">
@@ -21,15 +21,14 @@
                         <h6>Job Title:<%= job[i].jobtype %> </h6>
                         <h6>Job level :<%= job[i].jobexperiencelevel%></h6>
                         <h6>Post at :<%= job[i].jobpostdate %></h6>
+                        <h6>Time Ago:<%= moment(job[i].jobpostdate,"dddd, MMMM Do YYYY, h:mm:ss a").fromNow() %></h6>
                     </div>
                     <h6 class="text-uppercase"><%= job[i].skills %> </h6>
-                     <div class="items-link items-link2 f-right">
-                        <span><%= moment(job[i].jobpostdate,"dddd, MMMM Do YYYY, h:mm:ss a").fromNow() %></span>
-                    </div>
-                    <div class="rotate " >
-                        <a href="/jobseeker/appllyforjob/<%= job[i]._id %> " class="btn btn-primary btn- active" role="button" aria-pressed="true">Apply</a>
-                    </div>
                     
+                    <div class="rotate " >
+                   <a href="/jobseeker/appllyforjob/<%= job[i]._id %> " value="Test" id="testBtn" onclick="doOnClick();"
+                    class="btn btn-primary btn- danger"  role="button" aria-pressed="true">apply</a>
+                 </div>
                 </div>
             </div>
         </div>
@@ -38,5 +37,10 @@
     <% } %>
     
 <% } %>
-   
-<%- include('../partials/fotter.ejs') %>  
+
+<script>
+    function doOnClick(){
+        document.getElementById('testBtn').value = 'Ok tested';
+        return false
+    }
+</script>

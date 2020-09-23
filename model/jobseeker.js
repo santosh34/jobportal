@@ -6,6 +6,9 @@ const jobseekerSchema =new Schema({
     jobseekerusername:{
         type:String
     },
+    preferencejob:{
+        type:String
+     },
     jobseekeremail:{
         type:String
      },

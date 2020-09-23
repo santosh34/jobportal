@@ -8,10 +8,7 @@ router.get('/matchingjob',JobSeekerControllers.getJobSeekerMatchingJobpage)
 
 router.get('/appllyforjob/:postjobid',JobSeekerControllers.getJobSeekerAppliedJobpage)
 
-router.get('/applliedjob',JobSeekerControllers.getJobSeekerAllAppliedJobpage)
 
-
-router.get('/listappliedjob',JobSeekerControllers.getJobSeekerlistAppliedJobpage)
 
 
 

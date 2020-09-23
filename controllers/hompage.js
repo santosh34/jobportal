@@ -53,7 +53,7 @@ module.exports.getJobseekerHomePage=(req,res, next)=>{
    if(isjobseekerauth){
      
      console.log(req.session.jobseeker)
-      res.render('jobseeker/homepage',{title:'JobSeeker Home Page',user:req.session.jobseeker,isjobseekerauth:isjobseekerauth
+      res.render('jobseeker/homepage',{title:'JobSeeker Home Page',user:req.session.jobseeker,isjobseekerauth:isjobseekerauth,path:'/'
    });
    }else{
       res.redirect('/landingpage')
@@ -85,7 +85,8 @@ module.exports.getLandingPage=(req,res, next)=>{
                countjob:countjob,
                result:result,
                recent:recent,
-               moment:moment
+               moment:moment,
+               
             })
            
          });

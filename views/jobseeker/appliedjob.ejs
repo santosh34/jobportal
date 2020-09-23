@@ -1,9 +1,9 @@
 
 <%- include('../partials/header2.ejs') %> 
 <%- include('../partials/jobseekermenu.ejs') %>   
-<h1>applied job</h1>
 
-<div class="col main p-10 ml-5">
+
+<div class="col main p-10 ml-8">
     <h1 class="display-4 d-none d-sm-block">
         <% if(job.appliedjob){%>
             <% if((job.appliedjob.length) ==0){%>
@@ -19,12 +19,14 @@
                     <div class="rotate">
                         <h6>Company Name:<%=job.appliedjob[i].jobtitle%> </h6>
                         <h6>JobType:<%=job.appliedjob[i].jobtype%> </h6>
-                       
+                        <h6>Jobexperience:<%=job.appliedjob[i].jobexperiencelevel%> </h6>
+                        <h6>JobCategory:<%=job.appliedjob[i].jobbycategory %> </h6>
+                        <h5> Expire Date : <%= moment(job.appliedjob[i].jobexpire).diff(moment(),'days') %></span>days %></h5> 
                     </div>
-                   
-                    
+                    <div class="rotate " >
+                        <a href="/jobseeker/cancelappliedjob/<%=job.appliedjob[i]._id%>"class="btn btn-primary btn- danger"  role="button" aria-pressed="true">Cancel Job</a></div>
                 </div>
-            </div>
+                </div>
         </div>
      </div>
    <% } %>

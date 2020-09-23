@@ -42,12 +42,7 @@ router.post("/jobseekerhomepage",jobseekerloginvalidate,passport.authenticate('j
 }),AuthControllers.postJobSeekerLoginPage);
 
 
-
-
 router.get("/jobseekerlogout", AuthControllers.getJobSeekerLogoutPage);
-
-
-
 
 module.exports =router;
 
