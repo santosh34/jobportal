@@ -1,6 +1,7 @@
 const mongoose=require('mongoose')
 const User= require('../../model/user')
 const PostJob= require('../../model/postjob');
+const JobSeeker= require('../../model/jobseeker');
 
 
 
@@ -82,10 +83,18 @@ module.exports.getJobSeekerRegisterPage =(req,res,next)=>{
  }
  
  module.exports.postJobSeekerLoginPage =(req,res,next)=>{
+    const pipeline=[
+        {$match:{_id:new mongoose.Types.ObjectId(req.session.jobseeker)}},
+        {$project:{count:{$size:"$appliedjob"}}}]
+          JobSeeker.aggregate(pipeline)
+          .then(count=>{
+       // console.log('total applied job',count)
      var errors = req.flash('error');
-    res.render('jobseeker/homepage',{title:'Jobseeker Login',user:req.user,isjobseekerauth:req.session.isjobseekerLoggedIn,messages:errors,
-    hasErrors:errors.length>0,path:'/'});
- }
+     res.render('jobseeker/homepage',{title:'Jobseeker Login',user:req.user,isjobseekerauth:req.session.isjobseekerLoggedIn,messages:errors,
+    hasErrors:errors.length>0,path:'/',count:count});
+  })
+    }
+ 
  
  module.exports.getJobSeekerLogoutPage =(req,res,next)=>{
      req.session.isjobseekerLoggedIn = false;

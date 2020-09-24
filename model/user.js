@@ -13,6 +13,15 @@ const userSchema =new Schema({
         ref: "PostJob"
         
     },
+    appliedjobseeker:[{
+        type: Schema.Types.ObjectId,
+        ref: "JobSeeker"
+    }],
+    postjob:{
+        type:Schema.Types.ObjectId,
+        ref: "PostJob"
+        
+    },
     useraddress:{
         type:String
   

@@ -2,6 +2,7 @@ const mongoose=require('mongoose')
 const User= require('../model/user')
 const moment=require('moment')
 const PostJob= require('../model/postjob');
+const JobSeeker=require('../model/jobseeker')
 
 module.exports.getHomePage =(req,res,next)=>{
    let isemployeeauth = req.session.isLoggedIn;
@@ -39,11 +40,7 @@ module.exports.getEmployeeHomePage=(req,res, next)=>{
               })
             })
          }
-      }
-
-
-
-        
+      }       
   /* ==========================================================================
                          JobSeeker HomePage
      ========================================================================== */
@@ -51,10 +48,18 @@ module.exports.getEmployeeHomePage=(req,res, next)=>{
 module.exports.getJobseekerHomePage=(req,res, next)=>{
    let isjobseekerauth= req.session.isjobseekerLoggedIn;
    if(isjobseekerauth){
-     
-     console.log(req.session.jobseeker)
-      res.render('jobseeker/homepage',{title:'JobSeeker Home Page',user:req.session.jobseeker,isjobseekerauth:isjobseekerauth,path:'/'
-   });
+       const jobseekerid= req.session.jobseeker
+       const pipeline=[
+          {$match:{_id:new mongoose.Types.ObjectId(req.session.jobseeker)}},
+          {$project:{count:{$size:"$appliedjob"}}}]
+            JobSeeker.aggregate(pipeline)
+            .then(count=>{
+               console.log('total applied job',count)
+               res.render('jobseeker/homepage',{title:'JobSeeker Home Page',user:req.session.jobseeker,
+               isjobseekerauth:isjobseekerauth,path:'/',count:count});
+
+      })
+ 
    }else{
       res.redirect('/landingpage')
 

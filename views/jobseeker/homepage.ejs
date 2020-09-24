@@ -1,4 +1,43 @@
 <%- include('../partials/header2.ejs') %> 
 <%- include('../partials/jobseekermenu.ejs') %> 
-<h1>job seeekr home page jobseeker welcome</h1>
+<div class="col main  ">
+    <h5 class="display-4 d-none d-sm-block pr-2">
+     Dashboard
+    </h5>
+   <br>
+
+   <% for(let i=0;i<count.length; i++) { %>
+    <div class="row mb-3">
+        <div class="col-md-4 col-sm-3 ">
+            <div class="card bg-success text-white h-100">
+                <div class="card-body bg-success">
+                    <div class="rotate">
+                        <i class="fa fa-user fa-4x"></i>
+                    </div>
+                    <h6 class="text-uppercase">Total Applied JOB</h6>
+                    <h1 class="display-4"><%= count[i].count %>  </h1>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <% } %>
+    
+        
+    
+    <div class="col-xl-4 col-sm-5 ">
+        <div class="card text-white bg-danger h-100">
+            <div class="card-body bg-danger">
+                <div class="rotate">
+                    <i class="fa fa-list fa-4x"></i>
+                </div>
+                <h6 class="text-uppercase">Total Job Offer</h6>
+               
+                <h1 class="display-4">55 </h1>
+            </div>
+        </div>
+    </div>
+<br>
+
+            
 <%- include('../partials/fotter.ejs') %> 

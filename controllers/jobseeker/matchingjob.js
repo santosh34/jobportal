@@ -1,5 +1,6 @@
 var PostJob= require('../../model/postjob');
 const JobSeeker=require('../../model/jobseeker')
+const User=require('../../model/user')
 const moment =require('moment');
 
 module.exports.getJobSeekerMatchingJobpage =(req,res,next)=>{
@@ -18,21 +19,23 @@ module.exports.getJobSeekerMatchingJobpage =(req,res,next)=>{
 
 //applied jobposts
 module.exports.getJobSeekerAppliedJobpage =(req,res,next)=>{
-  const editingmode=req.query.edit
  const postjobid =req.params.postjobid
  JobSeeker.findOne({_id:req.session.jobseeker})
 .then(result=>{
-  if(result){
       JobSeeker.findOneAndUpdate({_id:result},
       {$addToSet:{appliedjob:postjobid}}).populate('appliedjob')
       .then(done=>{
-        console.log('Job That Has Been applied successfully ',done)
-        res.redirect('/jobseeker/matchingjob')
+      PostJob.findOne({_id:postjobid})
+      .then(done=>{
+        const postuserid=done.postuserid
+        User.findOneAndUpdate({_id:postuserid},
+        {$addToSet:{appliedjobseeker:req.session.jobseeker}})
+        .then(appliedjob =>{
+          res.redirect('/jobseeker/matchingjob')
+
+        })
       })
-    }else{
-    console.log('jot session id match')
-    res.redirect('/jobseeker/matchingjob')
-  }
+    })
 })
 .catch(err=>{
   console.log(err)
